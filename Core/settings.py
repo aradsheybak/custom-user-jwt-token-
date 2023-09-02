@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # arad apps
+    'User.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
