@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     # 3-rd party apps
     'rest_framework',
 
-    # arad apps
+    # Arad apps
     'User.apps.UserConfig',
+    'RestApi.apps.RestapiConfig'
 ]
 
 MIDDLEWARE = [
