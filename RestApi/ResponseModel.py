@@ -1,0 +1,3 @@
+class ResponseObject:
+    massage = ""
+    # data =

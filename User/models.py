@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
@@ -33,23 +33,16 @@ class CustomUser(AbstractUser):
         (FEMALE, "Female")
     ]
 
-    first_name = models.CharField(max_length=25, default="", )
-    last_name = models.CharField(max_length=25, default="")
-    username = models.CharField(max_length=25, default="")
-    mobile = models.CharField(max_length=25, unique=True, default="")
-    email = models.EmailField(max_length=254, unique=True)
-    gender = models.CharField(max_length=6, choices=GENDER, default=MALE)
-    birthday = models.DateField(default=datetime.now, blank=True, null=True)
-
+    first_name = models.CharField(max_length=25, default="", blank=True, null=True, )
+    last_name = models.CharField(max_length=25, default="", blank=True, null=True)
+    username = models.CharField(max_length=25, default="", unique=True)
+    mobile = models.CharField(max_length=25, blank=True, null=True, default="")
+    email = models.EmailField(max_length=254, blank=True, null=True, unique=True)
+    gender = models.CharField(max_length=6, blank=True, null=True, choices=GENDER, default=MALE)
+    birthday = models.DateField(default=datetime.date.today, blank=True, null=True)
     objects = CustomUserManager()
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['username']
-
-    def get_full_name(self):
-        return self.first_name + ' ' + self.last_name
-
-    def get_first_name(self):
-        return self.first_name
+    REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.username
