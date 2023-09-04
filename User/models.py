@@ -40,6 +40,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(max_length=254, blank=True, null=True, unique=True)
     gender = models.CharField(max_length=6, blank=True, null=True, choices=GENDER, default=MALE)
     birthday = models.DateField(default=datetime.date.today, blank=True, null=True)
+    avatar = models.ImageField(upload_to='images', default='')
     objects = CustomUserManager()
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
